@@ -1,6 +1,8 @@
 import socket
 import threading
 
+from client_handler import ClientHandler
+
 PORT = 12345
 clients = set()  # Множество для хранения всех подключённых клиентов
 
@@ -21,8 +23,8 @@ def main():
             # Принимаем новое подключение
             client_socket, _ = server_socket.accept()
             # Создаём обработчик клиента в отдельном потоке
-            client_handler = ClientHandler(client_socket)
-            client_handler.start()
+            clientHandler = ClientHandler(client_socket)
+            clientHandler.start()
 
 
 if __name__ == "__main__":
